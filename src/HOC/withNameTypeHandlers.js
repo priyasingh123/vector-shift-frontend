@@ -5,7 +5,6 @@ const withNameTypeHandlers =
   (config = {}) =>
   (Component) => {
     const WrappedComponent = (props) => {
-      // TODO: add style in HOC only
       const { data, id } = props;
       const {
         nameKey,
@@ -13,6 +12,7 @@ const withNameTypeHandlers =
         initialDefaultName,
         targetDefaultName,
         defaultType,
+        styleObj,
       } = config;
       const initialName =
         data?.[nameKey] ||
@@ -25,6 +25,14 @@ const withNameTypeHandlers =
         useSetValues(initialName);
       const [currType, setCurrType, handleTypeChange] =
         useSetValues(initialType);
+      const defaultStyleObj = {
+        width: 200,
+        height: 80,
+        border: "1px solid black",
+        borderRadius: "12px",
+        padding: "2px",
+        ...styleObj,
+      };
 
       useEffect(() => {
         setCurrName(
@@ -47,7 +55,7 @@ const withNameTypeHandlers =
       }, [data, defaultType, setCurrType, typeKey]);
 
       return (
-        <div style={{ width: 200, height: 80, border: "1px solid black" }}>
+        <div style={{ ...defaultStyleObj, ...styleObj }}>
           <Component
             {...props}
             currName={currName}
