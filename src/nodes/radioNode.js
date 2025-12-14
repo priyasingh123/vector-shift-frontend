@@ -56,8 +56,8 @@ const RadioNode = ({
 export default withNameTypeHandlers({
   targetDefaultName: "radio_",
   initialDefaultName: "radio-",
-  //   defaultType: "Text",
   styleObj: {
     height: 100,
+    backgroundColor: "#D1FAE5",
   },
 })(RadioNode);
