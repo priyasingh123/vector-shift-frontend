@@ -22,9 +22,18 @@ export const SubmitButton = () => {
 
       const data = await res.json();
       console.log(data);
+      alert(frameMessage(data));
     } catch (err) {
       console.log("error occured", err);
     }
+  };
+
+  const frameMessage = (data) => {
+    const { num_nodes, num_edges, is_dag } = data;
+    const message = `Total nodes are ${num_nodes} \n Total edges are ${num_edges} \n Graph is ${
+      is_dag ? "" : "not a "
+    }DAG`;
+    return message;
   };
 
   return (
