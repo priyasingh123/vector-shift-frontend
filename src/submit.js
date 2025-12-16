@@ -10,7 +10,7 @@ export const SubmitButton = () => {
   const { nodes, edges } = useStore(selector, shallow);
 
   const handleSubmit = async () => {
-    const baseUrl = "http://127.0.0.1:8000";
+    const baseUrl = "https://vectorshift-backend-iqym.onrender.com";
     try {
       const res = await fetch(`${baseUrl}/pipelines/parse`, {
         method: "POST",
