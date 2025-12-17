@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/vector-shift-frontend/static/css/main.cf3e6f8e.css",
+    "main.js": "/vector-shift-frontend/static/js/main.1848aed8.js",
+    "index.html": "/vector-shift-frontend/index.html",
+    "main.cf3e6f8e.css.map": "/vector-shift-frontend/static/css/main.cf3e6f8e.css.map",
+    "main.1848aed8.js.map": "/vector-shift-frontend/static/js/main.1848aed8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf3e6f8e.css",
+    "static/js/main.1848aed8.js"
+  ]
+}
