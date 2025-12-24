@@ -1,6 +1,7 @@
 // submit.js
 import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
+import { useRef, useEffect } from "react";
 
 const selector = (state) => ({
   nodes: state.nodes,
@@ -8,8 +9,17 @@ const selector = (state) => ({
 });
 export const SubmitButton = () => {
   const { nodes, edges } = useStore(selector, shallow);
+  const controllerRef = useRef(null);
+  useEffect(() => {
+    return () => {
+      controllerRef?.current?.abort();
+    };
+  }, []);
 
   const handleSubmit = async () => {
+    controllerRef?.current?.abort();
+    const controller = new AbortController();
+    controllerRef.current = controller;
     const baseUrl = "https://vectorshift-backend-iqym.onrender.com";
     try {
       const res = await fetch(`${baseUrl}/pipelines/parse`, {
@@ -18,6 +28,7 @@ export const SubmitButton = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ nodes, edges }),
+        signal: controller.signal,
       });
 
       const data = await res.json();
